@@ -1,0 +1,27 @@
+doctype strict
+html(xmlns="" xml:lang="en" lang="en")
+  head
+    meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+    title Testbed
+    meta(name="description" content="Put some description here for le bots")
+    script(type="text/javascript" src="vendor/wow.js")
+    
+    style
+      :stylus
+        body
+          color green
+          background black
+
+  body(class='document')
+    p Hello World
+    p(id='dyn') It still works yo!
+    script
+      :coffee-script
+        hue = 0
+        fade = ->
+          ++hue
+          hue %= 360
+          document.getElementById('dyn').style = "color: hsla(#{hue}, 100%, 50%, 1.0)"
+          window.setTimeout fade, 50
+        window.setTimeout fade, 50
+
