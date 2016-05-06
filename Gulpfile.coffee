@@ -7,6 +7,10 @@ G.task 'default', (done) ->
     .pipe jade()
     .pipe G.dest 'dist'
 
+  G
+    .src 'vendor/**'
+    .pipe G.dest 'dist'
+
 G
   .watch 'index.jade', ['default']
   .on 'change', -> console.log 'good'

@@ -4,24 +4,69 @@ html(xmlns="" xml:lang="en" lang="en")
     meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
     title Testbed
     meta(name="description" content="Put some description here for le bots")
-    script(type="text/javascript" src="vendor/wow.js")
+    link(rel="stylesheet" href="animate.css")
+    link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=OFL+Sorts+Mill+Goudy+TT:regular,italic')
+    script(type="text/javascript" src="wow.js")
     
     style
       :stylus
         body
-          color green
+          color hsl(120, 100%, 90%)
+          font-family 'OFL Sorts Mill Goudy','OFL Sorts Mill Goudy TT',serif
           background black
 
+          h1
+            font-size 250%
+            text-align center
+          h4
+            text-align right
+
+          section
+            padding 120px
+            &#who
+              background hsl(0, 0%,  10%)
+            &#where
+              background hsl(72, 00%, 5%)
+            &#how
+              background hsl(144, 00%,10%)
+            &#what
+              background hsl(0, 00%,15%)
+            &#when
+              background hsl(72, 00%,20%)
+
+          img.toolbelt
+            width 25%
+            height 25%
+
   body(class='document')
-    p Hello World
-    p(id='dyn') It still works yo!
-    script
-      :coffee-script
-        hue = 0
-        fade = ->
-          ++hue
-          hue %= 360
-          document.getElementById('dyn').style = "color: hsla(#{hue}, 100%, 50%, 1.0)"
-          window.setTimeout fade, 50
-        window.setTimeout fade, 50
+    h1 BML
+    script.
+      new WOW().init()
+    section#who.wow.fadeIn
+      h1 Who
+      h4 Identity 
+    section#what.wow.fadeInLeft
+      h1 What
+      h4 Stuff I Made
+      img#chromathud(src='http://davesilvermanart.com/blog/wp-content/uploads/2013/03/Title.png')
+      img#codmw3(src='http://vignette1.wikia.nocookie.net/callofduty/images/9/95/MW3_logo_Test.png/revision/latest?cb=20120120013620')
+    section#where.wow.fadeInRight
+      h1 Where
+      h4 Former Lives
+
+    section#how.wow.slideInLeft
+      h1 How
+      h4 My Toolbelt
+      img#vim.toolbelt(src='https://ohdoylerules.com/content/images/vim.svg')
+      img#coffee.toolbelt(src='https://worldvectorlogo.com/logos/coffeescript.svg')
+      img#node.toolbelt(src='https://nodejs.org/static/images/logos/nodejs-new-white-pantone.png')
+      img#solarized.toolbelt(src='http://ethanschoonover.com/solarized/img/solarized-yinyang.png')
+      img#git.toolbelt(src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/1024px-Git_icon.svg.png')
+    section#why.wow.slideInLeft
+      .inner
+        h1 Why
+        h4 What Drives Me
+    section.wow.slideInRight
+      .inner
+        h1 Yes I do.
 
