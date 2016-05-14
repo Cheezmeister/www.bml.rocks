@@ -1,71 +1,154 @@
+// TODO
+mixin image(source)
+  img(alt=text src='/assets/=source')
+
+mixin place(title,coordinates)
+  .place
+    p= title
+    img(width='80px' height='80px' alt=title title=title src='/assets/vagrant.svg')
+
 doctype strict
 html(xmlns="" xml:lang="en" lang="en")
   head
     meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
     title Testbed
-    meta(name="description" content="Put some description here for le bots")
+    meta(name="description" content="Brendan Luchen, Engineer of Full Stacks, Writer of Limericks, Bit Twiddling Extraordinaire")
     link(rel="stylesheet" href="animate.css")
     link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=OFL+Sorts+Mill+Goudy+TT:regular,italic')
     script(type="text/javascript" src="wow.js")
     
+    ////////////////////// 
+    // Style
+    ////////////////////// 
     style
       :stylus
         body
-          color hsl(120, 100%, 90%)
+          color hsl(120, 100%, 70%)
           font-family 'OFL Sorts Mill Goudy','OFL Sorts Mill Goudy TT',serif
-          background black
+          background magenta
+
+          h1,h4
+            margin-top 0
+            margin-bottom 0
 
           h1
             font-size 250%
             text-align center
+            font-variant small-caps
           h4
             text-align right
 
+          blockquote
+            text-align center
+            width 23em
+            font-size 24px
+            font-variant small-caps
+            em
+              color hsl(120, 100%, 30%)
+
+
           section
             padding 120px
+
+          img#logo
+            width 512px
+            height 512px
+            text-align center
+
+          section
+            background black
+            margin-left -100px
+            margin-right -100px
+
+            &#top
+              background hsl(120, 0%, 50%)
             &#who
               background hsl(0, 0%,  10%)
             &#where
               background hsl(72, 00%, 5%)
+              .place
+                display inline
+                border 1px solid aliceblue
+
             &#how
               background hsl(144, 00%,10%)
+              img.toolbelt
+                width 25%
+                height 25%
             &#what
               background hsl(0, 00%,15%)
+              img 
+                width 80%
             &#when
               background hsl(72, 00%,20%)
+            &#why
+              background hsl(0, 00%,15%)
 
-          img.toolbelt
-            width 25%
-            height 25%
+        .center-children
+          display flex
+          justify-content center
+          align-items center
+        .pull-right
+          justify-content right
 
+  ////////////////////// 
+  // Content
+  ////////////////////// 
   body(class='document')
-    h1 BML
     script.
       new WOW().init()
+    section#top
+      div.center-children
+        img#logo(width='50%' height='50%' src='assets/logo.png' alt='BML')
     section#who.wow.fadeIn
-      h1 Who
-      h4 Identity 
+      h4 Full-Stack Engineer
+      h1 Brendan Luchen
+      .flair.pull-right
+        #flair-stackexchange
+          a(href='http://stackexchange.com/users/40769')
+            img(src='http://stackexchange.com/users/flair/40769.png')
+        #flair-euler
+          img(src='https://projecteuler.net/profile/Cheezmeister.png')
+    section.wow.fadeInRight
+      .center-children
+        blockquote 
+          :markdown
+            An affinity for *learning* new things, a *left-brain-meets-right* approach to computing, and a passion for *creative expression* make me something like a Swiss-army sabre.
     section#what.wow.fadeInLeft
+      h4 Software I've Delivered
       h1 What
-      h4 Stuff I Made
       img#chromathud(src='http://davesilvermanart.com/blog/wp-content/uploads/2013/03/Title.png')
       img#codmw3(src='http://vignette1.wikia.nocookie.net/callofduty/images/9/95/MW3_logo_Test.png/revision/latest?cb=20120120013620')
     section#where.wow.fadeInRight
-      h1 Where
       h4 Former Lives
+      h1 Where
+      +place('Long Island, NY', 'blar')
+      +place('Rochester, NY', 'blar')
+      +place('Durham, NC', 'blar')
+      +place('Dubrovnik, Croatia', 'blar')
+      +place('Portland, ME', 'blar')
+      +place('Madison, WI', 'blar')
+      +place('Seattle, WA', 'blar')
 
     section#how.wow.slideInLeft
-      h1 How
       h4 My Toolbelt
-      img#vim.toolbelt(src='https://ohdoylerules.com/content/images/vim.svg')
-      img#coffee.toolbelt(src='https://worldvectorlogo.com/logos/coffeescript.svg')
-      img#node.toolbelt(src='https://nodejs.org/static/images/logos/nodejs-new-white-pantone.png')
-      img#solarized.toolbelt(src='http://ethanschoonover.com/solarized/img/solarized-yinyang.png')
-      img#git.toolbelt(src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/1024px-Git_icon.svg.png')
+      h1 How
+      // +image(vim, 'vim.svg')
+      img#vim.toolbelt(src='/assets/vim.svg')
+      img#coffee.toolbelt(src='/assets/coffeescript.svg')
+      img#node.toolbelt(src='/assets/nodejs-new-white-pantone.png')
+      img#git.toolbelt(src='/assets/1024px-Git_icon.svg.png')
+      img#vagrant.toolbelt(src='/assets/vagrant.svg')
     section#why.wow.slideInLeft
       .inner
-        h1 Why
         h4 What Drives Me
+        h1 Why
+        p
+          :markdown
+            This is a *markdown* text `snippet`.
+    section.wow.slideInRight
+      .inner
+        h1 I like cheez.
     section.wow.slideInRight
       .inner
         h1 Yes I do.
