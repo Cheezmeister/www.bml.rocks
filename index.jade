@@ -20,11 +20,14 @@ doctype html
 html(lang="en")
   head
     meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
     title Testbed
     meta(name="description" content="Brendan Luchen, Full-Stack Engineer. Scripter of Java, Tisane of Coffee, Writer of Limericks, Frame Pointer Extraordinaire")
     +css('animate.css')
     +css('http://fonts.googleapis.com/css?family=OFL+Sorts+Mill+Goudy+TT:regular,italic')
-    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous")
+    +css('bootstrap.min.css')
+    // +css('font-awesome.min.css')
+    +css('http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
     +javascript('wow.js')
     
     ////////////////////// 
@@ -38,10 +41,31 @@ html(lang="en")
           align-items center
         .pull-right
           justify-content right
+        .pull-left
+          justify-content left
+        .background-overlay-dark
+          position: relative;
+          width: 100%;
+          height: 100%;
+          margin: -120px;
+          background: rgba(0,0,0,0.8)
+        .interstitial
+          text-align center
+          width 23em
+          font-size 24px
+          font-variant small-caps
+          em
+            color hsl(120, 100%, 30%)
+
+
+
         body
           color hsl(120, 100%, 70%)
           font-family 'OFL Sorts Mill Goudy','OFL Sorts Mill Goudy TT',serif
           background magenta
+
+          i
+            font-family 'Helvetica',sans
 
           h1,h4
             margin-top 0
@@ -53,15 +77,6 @@ html(lang="en")
             font-variant small-caps
           h4
             text-align right
-
-          blockquote
-            text-align center
-            width 23em
-            font-size 24px
-            font-variant small-caps
-            em
-              color hsl(120, 100%, 30%)
-
 
           section
             padding 120px
@@ -75,8 +90,6 @@ html(lang="en")
             @extend .center-children
             width 100vw
             height 100vh
-            background url('/assets/doodle.jpg')
-            background-attachment fixed
 
           section
             background black
@@ -92,8 +105,6 @@ html(lang="en")
                 margin 24px
 
             &#how
-              background url('/assets/doodle.jpg')
-              background-attachment fixed
               img.toolbelt
                 width 25%
                 height 25%
@@ -107,6 +118,14 @@ html(lang="en")
             &#why
               background hsl(0, 00%,15%)
 
+          .background-doodle-light
+            // Props to https://css-tricks.com/tinted-images-multiple-backgrounds
+            background linear-gradient(hsla(100,100%,02%,0.8),hsla(140,100%,20%,0.8)), url('/assets/doodleprime.jpg')
+            background-attachment fixed
+          .background-doodle-dark
+            background linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('/assets/doodle.jpg')
+            background-attachment fixed
+
   ////////////////////// 
   // Content
   ////////////////////// 
@@ -114,44 +133,59 @@ html(lang="en")
     script.
       new WOW().init()
 
-    header#top
-      .center-children
-        img#logo(src='assets/logo.png' alt='BML')
+    header#top.background-doodle-dark
+      img#logo(src='assets/logo.png' alt='BML')
 
     section#who.wow.fadeIn
       h4 Full-Stack Engineer
-      h1 Brendan Luchen
-      .flair.pull-right
-        #flair-stackexchange
-          a(href='http://stackexchange.com/users/40769')
-            img(src='http://stackexchange.com/users/flair/40769.png')
-        #flair-euler
-          img(src='https://projecteuler.net/profile/Cheezmeister.png')
+      h4 Brendan Luchen
+      h1 Who
+      .contacts
+        i.fa.fa-linkedin.fa-fw.fa-2x
+        i.fa.fa-twitter.fa-fw.fa-2x
+        i.fa.fa-github.fa-fw.fa-2x
 
     section.quote.wow.fadeInRight
       .center-children
-        blockquote 
+        .interstitial
           :markdown
             An affinity for *learning* new things, a *left-brain-meets-right* approach to computing, and a passion for *creative expression* make me something like a Swiss-army sabre.
 
     section#what.wow.fadeInLeft
-      h4 Software I've Delivered
+      h4 Delivered Results
       h1 What
-      // img#chromathud(src='http://davesilvermanart.com/blog/wp-content/uploads/2013/03/Title.png')
-      // img#codmw3(src='http://vignette1.wikia.nocookie.net/callofduty/images/9/95/MW3_logo_Test.png/revision/latest?cb=20120120013620')
+      .row
+        .col-md-6
+          div(style='text-align: center')
+            h3 Professional
+            p Modern Warfare 3
+            p Epic Haiku for Android
+        .col-md-6
+          div(style='text-align: center')
+            h3 Personal
+            p Chromathud
+            p Kapok
+            p Vec
+      .row
+        .col-md-12
+          div(style='text-align: center')
+            h3 Writing
+            p
+              ul
+                li This is what Programming Language You Should Learn
+                li Game Design & Programming Sticky Topic
 
-    section.wow.slideInBottom
-        blockquote 
+
+    section.wow.fadeIn.background-doodle-light
+      .center-children
+        .interstitial
           :markdown
-            Scripter of Java.
+            Scripter of Java.  
+            Tisane of Coffee.  
+            Pointer of Stacks  
+            Limericksmith  
 
-            Tisane of Coffee.
-
-            Writer of Limericks.
-
-            Pointer of Frames.
-
-    section#where.wow.fadeInRight
+    section#where.wow.fadeIn
       h4 Former Lives
       h1 Where
       .center-children
@@ -164,7 +198,7 @@ html(lang="en")
         +place('Madison, WI', 'blar', 'I made apps for Epic here.')
         +place('Seattle, WA', 'blar', 'I live here.')
 
-    section#how.wow.slideInLeft
+    section#how.wow.fadeIn
       h4 My Toolbelt
       h1 How
       mixin tool(id, title, source)
@@ -174,11 +208,22 @@ html(lang="en")
       img#node.toolbelt(src='/assets/nodejs-new-white-pantone.png')
       img#git.toolbelt(src='/assets/1024px-Git_icon.svg.png')
       img#vagrant.toolbelt(src='/assets/vagrant.svg')
+      img#eclipse.toolbelt(src='/assets/eclipse.svg')
+      +tool('tmux', 'Tmux', '/assets/tmux.png')
 
-    section#why.wow.slideInLeft
+    section#why.wow.fadeIn
       .inner
         h4 What Drives Me
         h1 Why
         p
           :markdown
             Something something passion.
+
+    footer#bottom
+      .flair.pull-right
+        #flair-stackexchange
+          a(href='http://stackexchange.com/users/40769')
+            img(src='http://stackexchange.com/users/flair/40769.png')
+      .flair.pull-left
+        #flair-euler
+          img(src='https://projecteuler.net/profile/Cheezmeister.png')
