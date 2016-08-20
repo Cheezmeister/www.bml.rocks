@@ -8,13 +8,13 @@ mixin css(source)
 mixin javascript(source)
   script(type="text/javascript" src=source)
 
-mixin place(title, coordinates, description)
-  .place
-    .inner.center-children
-      span.title= title
-    .map.center-children
-      a(href='https://tools.wmflabs.org/geohack/geohack.php?params=40.8_N_73.3_W')
-        img(width='80px' height='80px' alt=title title=description src='/assets/vagrant.svg')
+mixin place(title, lat, long, description)
+  .col-lg-4
+    .place
+      .title.center-children
+        span.title(title=description)= title
+      .map.center-children
+        .googlemap(style='width:100px;height:100px' data-lat=lat data-long=long title=description)
 
 doctype html
 html(lang="en")
@@ -23,12 +23,12 @@ html(lang="en")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
     title Testbed
     meta(name="description" content="Brendan Luchen, Full-Stack Engineer. Scripter of Java, Tisane of Coffee, Writer of Limericks, Frame Pointer Extraordinaire")
-    +css('animate.css')
     +css('http://fonts.googleapis.com/css?family=OFL+Sorts+Mill+Goudy+TT:regular,italic')
-    +css('bootstrap.min.css')
-    // +css('font-awesome.min.css')
     +css('http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
+    +css('bootstrap.min.css')
+    +css('animate.css')
     +javascript('wow.js')
+    +javascript('http://maps.googleapis.com/maps/api/js')
     
     ////////////////////// 
     // Style
@@ -56,7 +56,8 @@ html(lang="en")
           font-variant small-caps
           em
             color hsl(120, 100%, 30%)
-
+        .googlemap
+          border-radius 8px
 
 
         body
@@ -78,7 +79,7 @@ html(lang="en")
           h4
             text-align right
 
-          section
+          section, header
             padding 120px
             min-height 100vh
 
@@ -88,8 +89,6 @@ html(lang="en")
 
           header#top
             @extend .center-children
-            width 100vw
-            height 100vh
 
           section
             background black
@@ -99,15 +98,17 @@ html(lang="en")
             &#where
               background hsl(72, 00%, 5%)
               .place
-                display inline
-                border 1px solid aliceblue
-                padding 8px
-                margin 24px
+                .map
+                  transition 0.2s ease
+                  padding 12px
+                  &:hover 
+                    transform scale(1.1)
 
             &#how
               img.toolbelt
-                width 25%
-                height 25%
+                width 21%
+                height 21%
+                margin 6%
 
             &#what
               background hsl(0, 00%,15%)
@@ -133,19 +134,41 @@ html(lang="en")
     script.
       new WOW().init()
 
+      google.maps.event.addDomListener(window, 'load', function() {
+        var els = document.getElementsByClassName("googlemap");
+        for (key in els) {
+          var el = els[key];
+          var lat = el.dataset.lat;
+          var lng = el.dataset.long;
+          new google.maps.Map(el, {
+            center: new google.maps.LatLng(lat,lng),
+            zoom: 8
+          });
+        }
+      });
+
     header#top.background-doodle-dark
       img#logo(src='assets/logo.png' alt='BML')
-
-    section#who.wow.fadeIn
+    section#who.wow.slideInLeft
       h4 Full-Stack Engineer
       h4 Brendan Luchen
       h1 Who
-      .contacts
-        i.fa.fa-linkedin.fa-fw.fa-2x
-        i.fa.fa-twitter.fa-fw.fa-2x
-        i.fa.fa-github.fa-fw.fa-2x
+      h1.contacts
+        a(href='https://linkedin.com/in/cheezmeister')
+          i.fa.fa-linkedin.fa-fw.fa-2x
+        a(href='https://twitter.com/chzmstr')
+          i.fa.fa-twitter.fa-fw.fa-2x
+        a(href='https://github.com/cheezmeister')
+          i.fa.fa-github.fa-fw.fa-2x
+      .flair.pull-right
+        #flair-stackexchange
+          a(href='http://stackexchange.com/users/40769')
+            img(src='http://stackexchange.com/users/flair/40769.png')
+      .flair.pull-left
+        #flair-euler
+          img(src='https://projecteuler.net/profile/Cheezmeister.png')
 
-    section.quote.wow.fadeInRight
+    section.quote.wow.slideInRight
       .center-children
         .interstitial
           :markdown
@@ -158,22 +181,22 @@ html(lang="en")
         .col-md-6
           div(style='text-align: center')
             h3 Professional
-            p Modern Warfare 3
-            p Epic Haiku for Android
+            p: a(href='') Modern Warfare 3
+            p: a(href='') Epic Haiku for Android
         .col-md-6
           div(style='text-align: center')
             h3 Personal
-            p Chromathud
-            p Kapok
-            p Vec
+            p: a(href='https://luchenlabs.com/projects/chromathud') Chromathud
+            p: a(href='https://npmjs.org/kapok') Kapok
+            p: a(href='https://luchenlabs.com/projects/vec') Vec
       .row
         .col-md-12
           div(style='text-align: center')
             h3 Writing
             p
               ul
-                li This is what Programming Language You Should Learn
-                li Game Design & Programming Sticky Topic
+                p: a(href='https://luchenlabs.com/words/programming') This is what Programming Language You Should Learn
+                p: a(href='') Game Design & Programming Sticky Topic
 
 
     section.wow.fadeIn.background-doodle-light
@@ -188,15 +211,14 @@ html(lang="en")
     section#where.wow.fadeIn
       h4 Former Lives
       h1 Where
-      .center-children
-        +place('Long Island, NY', 'blar', 'I grew up here.')
-        +place('Rochester, NY', 'blar', 'I studied Computer Science here.')
-        +place('Durham, NC', 'blar', 'I fixed bugs for IBM here.')
-        +place('Dubrovnik, Croatia', 'blar', 'I studied robots and the environment here.')
-      .center-children
-        +place('Portland, ME', 'blar', 'I made games for Activision here.')
-        +place('Madison, WI', 'blar', 'I made apps for Epic here.')
-        +place('Seattle, WA', 'blar', 'I live here.')
+      .row
+        +place('Long Island, NY', '40.8', '-73.3', 'I grew up here.')
+        +place('Rochester, NY', '43.165556', '-77.611389', 'I studied Computer Science here.')
+        +place('Durham, NC', '35.988611', '-78.907222', 'I fixed bugs for IBM here.')
+        +place('Dubrovnik, Croatia', '42.640278', '18.108333', 'I studied robots and the environment here.')
+        +place('Portland, ME', '43.666667', '-70.266667', 'I made games for Activision here.')
+        +place('Madison, WI', '43.066667', '-89.4', 'I made apps for Epic here.')
+        +place('Seattle, WA', '47.609722', '-122.333056', 'I live here.')
 
     section#how.wow.fadeIn
       h4 My Toolbelt
@@ -204,12 +226,14 @@ html(lang="en")
       mixin tool(id, title, source)
         img.toolbelt(id=id src=source alt=id title=title)
       +tool('vim', 'Vim', '/assets/vim.svg')
-      img#coffee.toolbelt(src='/assets/coffeescript.svg')
-      img#node.toolbelt(src='/assets/nodejs-new-white-pantone.png')
-      img#git.toolbelt(src='/assets/1024px-Git_icon.svg.png')
-      img#vagrant.toolbelt(src='/assets/vagrant.svg')
-      img#eclipse.toolbelt(src='/assets/eclipse.svg')
+      +tool('coffee', 'CoffeeScript', '/assets/coffeescript.svg')
+      +tool('node', 'NodeJS', '/assets/nodejs-new-white-pantone.png')
+      +tool('git', ' Git', '/assets/1024px-Git_icon.svg.png')
       +tool('tmux', 'Tmux', '/assets/tmux.png')
+      +tool('elixir', 'Elixir', '/assets/elixir.png')
+      +tool('arch', 'Arch Linux', '/assets/arch.svg')
+      +tool('vagrant', 'Vagrant', '/assets/vagrant.svg')
+      +tool('eclipse', 'Eclipse', '/assets/eclipse.svg')
 
     section#why.wow.fadeIn
       .inner
@@ -217,13 +241,13 @@ html(lang="en")
         h1 Why
         p
           :markdown
-            Something something passion.
+            I take a slightly different approach to software.
+            I code for love of the craft, but it is also a means to an end.
+            I try to collect real experiences in lieu of those on paper.
+            I fold them back into the core competencies above to develop as a coder.
+            Work, play, teaching, learning, living. All are facets of the same thing.
+            I am neither a generalist nor a specialist.
+            I am not shaped like a 'T' or like any other letter of the alphabet.
+
 
     footer#bottom
-      .flair.pull-right
-        #flair-stackexchange
-          a(href='http://stackexchange.com/users/40769')
-            img(src='http://stackexchange.com/users/flair/40769.png')
-      .flair.pull-left
-        #flair-euler
-          img(src='https://projecteuler.net/profile/Cheezmeister.png')
