@@ -1,6 +1,6 @@
-// TODO
-mixin image(source)
-  img(alt=text src='/assets/=source')
+// Map key AIzaSyB20MgpK8uazyS0pZWfkMiA6mzwLkCpzOA
+mixin image(source, text)
+  img(alt=text src='/assets/' + source)
 
 mixin css(source)
   link(rel='stylesheet' href=source)
@@ -8,27 +8,19 @@ mixin css(source)
 mixin javascript(source)
   script(type="text/javascript" src=source)
 
-mixin place(title, lat, long, description)
-  .col-lg-4
-    .place
-      .title.center-children
-        span.title(title=description)= title
-      .map.center-children
-        .googlemap(style='width:100px;height:100px' data-lat=lat data-long=long title=description)
-
 doctype html
 html(lang="en")
   head
     meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
-    title Testbed
+    title Brendan Luchen
     meta(name="description" content="Brendan Luchen, Full-Stack Engineer. Scripter of Java, Tisane of Coffee, Writer of Limericks, Frame Pointer Extraordinaire")
     +css('http://fonts.googleapis.com/css?family=OFL+Sorts+Mill+Goudy+TT:regular,italic')
     +css('http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
     +css('bootstrap.min.css')
     +css('animate.css')
     +javascript('wow.js')
-    +javascript('http://maps.googleapis.com/maps/api/js')
+    +javascript('https://maps.googleapis.com/maps/api/js?key=AIzaSyB20MgpK8uazyS0pZWfkMiA6mzwLkCpzOA')
     
     ////////////////////// 
     // Style
@@ -51,6 +43,7 @@ html(lang="en")
           background: rgba(0,0,0,0.8)
         .interstitial
           text-align center
+          vertical-align middle
           width 23em
           font-size 24px
           font-variant small-caps
@@ -58,12 +51,18 @@ html(lang="en")
             color hsl(120, 100%, 30%)
         .googlemap
           border-radius 8px
+          background aliceblue
+          transition 0.4s ease
+        .focus
+          width 80%
+          text-align center
+          font-size 1.5em
 
 
         body
           color hsl(120, 100%, 70%)
           font-family 'OFL Sorts Mill Goudy','OFL Sorts Mill Goudy TT',serif
-          background magenta
+          background black
 
           i
             font-family 'Helvetica',sans
@@ -89,6 +88,9 @@ html(lang="en")
 
           header#top
             @extend .center-children
+          footer#bottom
+            span
+              margin-top -100%
 
           section
             background black
@@ -105,7 +107,7 @@ html(lang="en")
                     transform scale(1.1)
 
             &#how
-              img.toolbelt
+              .toolbelt
                 width 21%
                 height 21%
                 margin 6%
@@ -117,7 +119,8 @@ html(lang="en")
             &#when
               background hsl(72, 00%,20%)
             &#why
-              background hsl(0, 00%,15%)
+              background linear-gradient(hsla(100,100%,0%,0.99),hsla(140,100%,20%,0.8)), url('https://upload.wikimedia.org/wikipedia/commons/f/fc/Mandel_zoom_08_satellite_antenna.jpg')
+              background-attachment fixed
 
           .background-doodle-light
             // Props to https://css-tricks.com/tinted-images-multiple-backgrounds
@@ -148,10 +151,11 @@ html(lang="en")
       });
 
     header#top.background-doodle-dark
-      img#logo(src='assets/logo.png' alt='BML')
+      .center-children
+        img#logo(src='assets/logo.png' alt='BML')
     section#who.wow.slideInLeft
-      h4 Full-Stack Engineer
       h4 Brendan Luchen
+      h4 Full-Stack Engineer
       h1 Who
       h1.contacts
         a(href='https://linkedin.com/in/cheezmeister')
@@ -160,13 +164,18 @@ html(lang="en")
           i.fa.fa-twitter.fa-fw.fa-2x
         a(href='https://github.com/cheezmeister')
           i.fa.fa-github.fa-fw.fa-2x
-      .flair.pull-right
-        #flair-stackexchange
-          a(href='http://stackexchange.com/users/40769')
-            img(src='http://stackexchange.com/users/flair/40769.png')
-      .flair.pull-left
-        #flair-euler
-          img(src='https://projecteuler.net/profile/Cheezmeister.png')
+        a(href='https://github.com/cheezmeister')
+          i.fa.fa-envelope-square.fa-fw.fa-2x
+      .flairzone
+        .flair.pull-right
+          #flair-stackexchange
+            a(href='http://stackexchange.com/users/40769')
+              img(src='http://stackexchange.com/users/flair/40769.png' alt="StackExchange")
+        .flair.pull-left
+          #flair-euler
+            img(src='https://projecteuler.net/profile/Cheezmeister.png' alt="Project Euler")
+      .center-children
+        img(width='80%' height='60%' src='/assets/cover.jpg')
 
     section.quote.wow.slideInRight
       .center-children
@@ -181,8 +190,9 @@ html(lang="en")
         .col-md-6
           div(style='text-align: center')
             h3 Professional
-            p: a(href='') Modern Warfare 3
-            p: a(href='') Epic Haiku for Android
+            p: a(href='https://www.callofduty.com/mw3') Modern Warfare 3
+            // +image('mw3.png', 'Modern Warfare 3')
+            p: a(href='https://play.google.com/store/apps/details?id=com.epic.haiku.android&hl=en') Epic Haiku for Android
         .col-md-6
           div(style='text-align: center')
             h3 Personal
@@ -196,7 +206,8 @@ html(lang="en")
             p
               ul
                 p: a(href='https://luchenlabs.com/words/programming') This is what Programming Language You Should Learn
-                p: a(href='') Game Design & Programming Sticky Topic
+                p: a(href='https://luchenlabs.com/words/gdc') How I Crashed GDC (and why you should too)
+                p: a(href='https://github.com/cheezmeister/gfsticky') Game Design & Programming Sticky Topic
 
 
     section.wow.fadeIn.background-doodle-light
@@ -211,43 +222,72 @@ html(lang="en")
     section#where.wow.fadeIn
       h4 Former Lives
       h1 Where
-      .row
+      mixin place(title, lat, long, description)
+        .col-lg-4
+          .place
+            .title.center-children
+              a(href="https://en.wikipedia.org/wiki/" + title)
+                span.title(title=description)= title
+            .map.center-children
+              .googlemap(style='width:120px;height:120px' data-lat=lat data-long=long title=description)
+
+      .center-children
         +place('Long Island, NY', '40.8', '-73.3', 'I grew up here.')
         +place('Rochester, NY', '43.165556', '-77.611389', 'I studied Computer Science here.')
+      .center-children
         +place('Durham, NC', '35.988611', '-78.907222', 'I fixed bugs for IBM here.')
         +place('Dubrovnik, Croatia', '42.640278', '18.108333', 'I studied robots and the environment here.')
         +place('Portland, ME', '43.666667', '-70.266667', 'I made games for Activision here.')
+      .center-children
         +place('Madison, WI', '43.066667', '-89.4', 'I made apps for Epic here.')
         +place('Seattle, WA', '47.609722', '-122.333056', 'I live here.')
+
+    section.wow.fadeIn.background-doodle-light.center-children
+      .center-children
+        .interstitial
+          :markdown
+            Code Monkey & Ski Junkie  
+            Game Maker & Bread Baker  
+            Tea Drinker & Deep Thinker  
 
     section#how.wow.fadeIn
       h4 My Toolbelt
       h1 How
-      mixin tool(id, title, source)
-        img.toolbelt(id=id src=source alt=id title=title)
-      +tool('vim', 'Vim', '/assets/vim.svg')
-      +tool('coffee', 'CoffeeScript', '/assets/coffeescript.svg')
-      +tool('node', 'NodeJS', '/assets/nodejs-new-white-pantone.png')
-      +tool('git', ' Git', '/assets/1024px-Git_icon.svg.png')
-      +tool('tmux', 'Tmux', '/assets/tmux.png')
-      +tool('elixir', 'Elixir', '/assets/elixir.png')
-      +tool('arch', 'Arch Linux', '/assets/arch.svg')
-      +tool('vagrant', 'Vagrant', '/assets/vagrant.svg')
-      +tool('eclipse', 'Eclipse', '/assets/eclipse.svg')
+      mixin tool(id, title, source, link)
+        a(href="https://en.wikipedia.org/wiki/" + link)
+          img.toolbelt(id=id src=source alt=id title=title)
+      +tool('vim', 'Vim', '/assets/vim.svg', 'Vim_(Text_Editor)')
+      +tool('coffee', 'CoffeeScript', '/assets/coffeescript.svg', 'CoffeeScript')
+      +tool('node', 'NodeJS', '/assets/nodejs-new-white-pantone.png', 'Node.js')
+      +tool('git', ' Git', '/assets/1024px-Git_icon.svg.png', 'Git')
+      +tool('tmux', 'Tmux', '/assets/tmux.png', 'tmux')
+      +tool('elixir', 'Elixir', '/assets/elixir.png', 'Elixir (programming language)')
+      +tool('arch', 'Arch Linux', '/assets/arch.svg', 'Arch Linux')
+      +tool('vagrant', 'Vagrant', '/assets/vagrant.svg', 'Vagrant_(Software)')
+      +tool('eclipse', 'Eclipse', '/assets/eclipse.svg', 'Eclipse_(Software)')
 
     section#why.wow.fadeIn
       .inner
         h4 What Drives Me
         h1 Why
-        p
-          :markdown
-            I take a slightly different approach to software.
-            I code for love of the craft, but it is also a means to an end.
-            I try to collect real experiences in lieu of those on paper.
-            I fold them back into the core competencies above to develop as a coder.
-            Work, play, teaching, learning, living. All are facets of the same thing.
-            I am neither a generalist nor a specialist.
-            I am not shaped like a 'T' or like any other letter of the alphabet.
+        .center-children
+          .focus
+            :markdown
+              I take a slightly different approach to software.
+              I code for love of the craft, but it is also a means to an end.
+              Software is a precise but organic machine which solves a specific problem; I try not to get lost in the implementation details.
 
+              I try to collect real experiences in lieu of those on paper.
+              I fold them back into the core competencies above to develop as a coder.
+              **Work, play, teaching, learning, living.** All are facets of the same thing.
+              From music and Starcraft to travel and Aikido, I learn and grow.
+              That is my mission; coding merely brings the bacon.
 
-    footer#bottom
+              I am neither a generalist nor a specialist.
+              I am not shaped like a 'T' or like any other letter of the alphabet.
+              I am a complex, fractally human being and become more so with every waking minute.
+
+              I'm also pretty good at building things.
+
+    footer#bottom: .center-children: span: :markdown
+       Want to build things together? [Drop me a line.](mailto:brendan@luchenlabs.com)
