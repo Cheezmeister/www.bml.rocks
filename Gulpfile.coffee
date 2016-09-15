@@ -17,4 +17,3 @@ G.task 'default', (done) ->
 
 G
   .watch 'index.jade', ['default']
-  .on 'change', -> console.log 'good'

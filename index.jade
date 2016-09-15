@@ -89,8 +89,7 @@ html(lang="en")
           header#top
             @extend .center-children
           footer#bottom
-            span
-              margin-top -100%
+            border-top 1px solid #444
 
           section
             background black
@@ -129,6 +128,9 @@ html(lang="en")
           .background-doodle-dark
             background linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('/assets/doodle.jpg')
             background-attachment fixed
+          .background-doodle-color
+            background linear-gradient(hsla(80,100%,0%,0.8),hsla(120,100%,0%,0.8)), url('/assets/doodledprime.jpg')
+            background-attachment fixed
 
   ////////////////////// 
   // Content
@@ -164,8 +166,8 @@ html(lang="en")
           i.fa.fa-twitter.fa-fw.fa-2x
         a(href='https://github.com/cheezmeister')
           i.fa.fa-github.fa-fw.fa-2x
-        a(href='https://github.com/cheezmeister')
-          i.fa.fa-envelope-square.fa-fw.fa-2x
+      .center-children
+        img(width='80%' height='60%' src='/assets/cover.jpg')
       .flairzone
         .flair.pull-right
           #flair-stackexchange
@@ -174,8 +176,6 @@ html(lang="en")
         .flair.pull-left
           #flair-euler
             img(src='https://projecteuler.net/profile/Cheezmeister.png' alt="Project Euler")
-      .center-children
-        img(width='80%' height='60%' src='/assets/cover.jpg')
 
     section.quote.wow.slideInRight
       .center-children
@@ -210,14 +210,14 @@ html(lang="en")
                 p: a(href='https://github.com/cheezmeister/gfsticky') Game Design & Programming Sticky Topic
 
 
-    section.wow.fadeIn.background-doodle-light
+    section.wow.fadeIn.background-doodle-color
       .center-children
         .interstitial
           :markdown
             Scripter of Java.  
             Tisane of Coffee.  
-            Pointer of Stacks  
-            Limericksmith  
+            Pointer of Stacks.
+            Limericksmith.
 
     section#where.wow.fadeIn
       h4 Former Lives
@@ -245,10 +245,18 @@ html(lang="en")
     section.wow.fadeIn.background-doodle-light.center-children
       .center-children
         .interstitial
-          :markdown
-            Code Monkey & Ski Junkie  
-            Game Maker & Bread Baker  
-            Tea Drinker & Deep Thinker  
+          .row
+            .col-md-4 Code Monkey
+            .col-md-4 ⛷
+            .col-md-4 Ski Junkie  
+          .row
+            .col-md-4 Game Maker
+            .col-md-4 🕹 
+            .col-md-4 Bread Baker  
+          .row 
+            .col-md-4 Tea Drinker
+            .col-md-4 🧀 
+            .col-md-4 Deep Thinker  
 
     section#how.wow.fadeIn
       h4 My Toolbelt
@@ -280,7 +288,7 @@ html(lang="en")
               I try to collect real experiences in lieu of those on paper.
               I fold them back into the core competencies above to develop as a coder.
               **Work, play, teaching, learning, living.** All are facets of the same thing.
-              From music and Starcraft to travel and Aikido, I learn and grow.
+              From baking and Starcraft to travel and Aikido, I learn and grow.
               That is my mission; coding merely brings the bacon.
 
               I am neither a generalist nor a specialist.
@@ -290,4 +298,4 @@ html(lang="en")
               I'm also pretty good at building things.
 
     footer#bottom: .center-children: span: :markdown
-       Want to build things together? [Drop me a line.](mailto:brendan@luchenlabs.com)
+       Want to build things together? [Drop me a line.](mailto:bml@luchenlabs.com)
