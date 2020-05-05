@@ -1,10 +1,10 @@
 G = require 'gulp'
-jade = require 'gulp-jade'
+pug = require 'gulp-pug'
 
 G.task 'default', (done) ->
   G
     .src 'index.jade'
-    .pipe jade()
+    .pipe pug()
     .pipe G.dest 'dist'
 
   G
@@ -16,4 +16,4 @@ G.task 'default', (done) ->
 
 
 G
-  .watch 'index.jade', ['default']
+  .watch 'index.jade', G.series 'default'
