@@ -138,18 +138,18 @@ html(lang="en")
     script.
       new WOW().init()
 
-      google.maps.event.addDomListener(window, 'load', function() {
-        var els = document.getElementsByClassName("googlemap");
-        for (key in els) {
-          var el = els[key];
-          var lat = el.dataset.lat;
-          var lng = el.dataset.long;
-          new google.maps.Map(el, {
-            center: new google.maps.LatLng(lat,lng),
-            zoom: 8
-          });
-        }
-      });
+      // google.maps.event.addDomListener(window, 'load', function() {
+      //   var els = document.getElementsByClassName("googlemap");
+      //   for (key in els) {
+      //     var el = els[key];
+      //     var lat = el.dataset.lat;
+      //     var lng = el.dataset.long;
+      //     new google.maps.Map(el, {
+      //       center: new google.maps.LatLng(lat,lng),
+      //       zoom: 8
+      //     });
+      //   }
+      // });
 
     header#top.background-doodle-dark
       .center-children
@@ -303,4 +303,31 @@ html(lang="en")
               I like to work with my brain and my hands, but I'm better at the former.
 
     footer#bottom: .center-children: span: :markdown
-       Want to build things together? [Drop me a line.](mailto:bml@luchenlabs.com)
+       Want to build things together? [Drop me a line.](mailto:sp@mnesty.com)
+
+    script.
+      // Oh hi there! WTF is this?
+      // Spammers have been harvesting the email from this page. Very rude.
+      // This blob of JS puts a real address in there for humans only.
+      // But since you're here, don't click on that. Just mail my first name at luchenlabs.com
+      // with [EXTRA CREDIT] on the subject line
+      document.onscroll = (async () => {
+        let ip;
+        document.onscroll = null;
+        document.querySelector('footer#bottom a').href = [ 'mailto:', 'bml+', new Date().toISOString().replace(/:/g, '-'), '@luchenlabs', '.com', ].join('');
+        fetch('https://www.cloudflare.com/cdn-cgi/trace').
+          then(r => r.body.getReader()).
+          then(reader => reader.read()).
+          then(o => (new TextDecoder("utf-8").decode(o.value))).
+          then(v => console.log(ip = v.match(/ip=(.*)/)[1])).
+          then(() =>
+            document.querySelector('footer#bottom a').href = [
+              'mailto:',
+              'bml+',
+              new Date().toISOString().replace(/:/g, '-'),
+              `-${ip}`,
+              '@luchenlabs',
+              '.com',
+            ].join('')
+          );
+      });
