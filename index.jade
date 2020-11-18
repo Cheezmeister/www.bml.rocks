@@ -48,6 +48,7 @@ html(lang="en")
           font-variant small-caps
           em
             color hsl(120, 100%, 30%)
+            text-shadow 0 0 5px hsl(120, 100%, 50%)
         .googlemap
           border-radius 8px
           background aliceblue
@@ -138,19 +139,6 @@ html(lang="en")
     script.
       new WOW().init()
 
-      // google.maps.event.addDomListener(window, 'load', function() {
-      //   var els = document.getElementsByClassName("googlemap");
-      //   for (key in els) {
-      //     var el = els[key];
-      //     var lat = el.dataset.lat;
-      //     var lng = el.dataset.long;
-      //     new google.maps.Map(el, {
-      //       center: new google.maps.LatLng(lat,lng),
-      //       zoom: 8
-      //     });
-      //   }
-      // });
-
     header#top.background-doodle-dark
       .center-children
         img#logo(src='assets/logo.png' alt='BML')
@@ -189,12 +177,14 @@ html(lang="en")
         .col-md-6
           div(style='text-align: center')
             h3 Professional
-            p: a(href='https://www.callofduty.com/mw3') Modern Warfare 3
-            // +image('mw3.png', 'Modern Warfare 3')
             p: a(href='https://play.google.com/store/apps/details?id=com.epic.haiku.android&hl=en') Epic Haiku for Android
+            p: a(href='https://teikametrics.com/product') Teikametrics Flywheel
+            p: a(href='https://www.callofduty.com/mw3') Modern Warfare 3
+            +image('mw3.png', 'Modern Warfare 3')
         .col-md-6
           div(style='text-align: center')
             h3 Personal
+            p: a(href='http://ocjb.me') OverClocked Jukebox
             p: a(href='https://luchenlabs.com/projects/chromathud') Chromathud
             p: a(href='https://npmjs.org/kapok') Kapok
             p: a(href='https://luchenlabs.com/projects/vec') Vec
@@ -228,7 +218,8 @@ html(lang="en")
               a(href="https://en.wikipedia.org/wiki/" + title)
                 span.title(title=description)= title
             .map.center-children
-              .googlemap(style='width:120px;height:120px' data-lat=lat data-long=long title=description)
+              a(href=`https://www.bing.com/maps?cp=${lat}~${long}&lvl=10`)
+                img.googlemap(src='https://placekitten.com/120/120?FIXME' style='width:120px;height:120px' data-lat=lat data-long=long title=description)
 
       .center-children
         +place('Long Island, NY', '40.8', '-73.3', 'I grew up here.')
@@ -306,11 +297,13 @@ html(lang="en")
        Want to build things together? [Drop me a line.](mailto:sp@mnesty.com)
 
     script.
-      // Oh hi there! WTF is this?
-      // Spammers have been harvesting the email from this page. Very rude.
-      // This blob of JS puts a real address in there for humans only.
-      // But since you're here, don't click on that. Just mail my first name at luchenlabs.com
-      // with [EXTRA CREDIT] on the subject line
+      /////////////////////////////
+      /// Oh hi there! WTF is this?
+      /// Spammers have been harvesting the email from this page. Very rude.
+      /// This blob of JS puts a real address in there for humans only.
+      /// But since you're here, don't click on that. Just mail my first name at luchenlabs.com
+      /// with [EXTRA CREDIT] on the subject line
+      /////////////////////////////
       document.onscroll = (async () => {
         let ip;
         document.onscroll = null;
