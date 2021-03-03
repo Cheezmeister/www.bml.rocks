@@ -18,7 +18,7 @@
     "gulp-pug": "^4.0.1",
     "jstransformer-markdown": "^1.2.1",
     "jstransformer-stylus": "^1.5.0",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "stylus": "^0.54.7",
     "supermarked": "^2.0.0",
     "wow": "^0.0.6"
