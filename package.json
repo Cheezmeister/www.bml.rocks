@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "live-server dist --port=31337",
     "build": "gulp",
-    "deploy": "rsync -aivze ssh dist/ gany:www/bml.rocks/www/"
+    "deploy": "chmod -R u+rwX,go+rX,go-w dist/ && rsync -aivze ssh dist/ gany:www/bml.rocks/www/"
   },
   "author": "",
   "license": "ISC",
