@@ -19,7 +19,7 @@ html(lang="en")
     +css('bootstrap.min.css')
     +css('animate.css')
     +javascript('wow.js')
-    +javascript('https://maps.googleapis.com/maps/api/js?key=AIzaSyB20MgpK8uazyS0pZWfkMiA6mzwLkCpzOA')
+    // +javascript('https://maps.googleapis.com/maps/api/js?key=AIzaSyB20MgpK8uazyS0pZWfkMiA6mzwLkCpzOA')
     
     ////////////////////// 
     // Style
@@ -30,17 +30,19 @@ html(lang="en")
           display flex
           justify-content center
           align-items center
-        .pull-right
-          justify-content right
-        .pull-left
-          justify-content left
+        .flairzone
+          display flex
+          flex-direction row-reverse
+          width 80%
+          justify-content space-between
+          margin-top 1em
         .background-overlay-dark
           position: relative;
           width: 100%;
           height: 100%;
           margin: -120px;
           background: rgba(0,0,0,0.8)
-        .interstitial
+        .quote
           text-align center
           vertical-align middle
           width 23em
@@ -82,6 +84,9 @@ html(lang="en")
             padding 120px
             min-height 100vh
 
+            &.interstitial
+              min-height 50vh
+
           img#logo
             text-align center
             vertical-align center
@@ -118,7 +123,7 @@ html(lang="en")
             &#when
               background hsl(72, 00%,20%)
             &#why
-              background linear-gradient(hsla(100,100%,0%,0.99),hsla(240,100%,20%,0.8)), url('https://upload.wikimedia.org/wikipedia/commons/f/fc/Mandel_zoom_08_satellite_antenna.jpg')
+              background linear-gradient(rgba(5, 65, 117, 0.99), rgba(0,0,102,0.6)), url("https://upload.wikimedia.org/wikipedia/commons/f/fc/Mandel_zoom_08_satellite_antenna.jpg")
               background-attachment fixed
 
           .background-doodle-light
@@ -155,18 +160,23 @@ html(lang="en")
           i.fa.fa-github.fa-fw.fa-2x
       .center-children
         img(width='80%' height='60%' src='/assets/cover.jpg')
-      .flairzone
-        .flair.pull-right
-          #flair-stackexchange
-            a(href='http://stackexchange.com/users/40769')
-              img(src='http://stackexchange.com/users/flair/40769.png' alt="StackExchange")
-        .flair.pull-left
-          #flair-euler
-            img(src='https://projecteuler.net/profile/Cheezmeister.png' alt="Project Euler")
-
-    section.quote.wow.slideInRight
       .center-children
-        .interstitial
+        .flairzone
+          .flair
+            #flair-stackexchange
+              a(href='http://stackexchange.com/users/40769')
+                img(src='http://stackexchange.com/users/flair/40769.png' alt="StackExchange")
+          .flair
+            #flair-aoc(style='border: 1px solid #888')
+              a(href='https://adventofcode.com')
+                img(src='/assets/aoc-flair-prototype.png' alt="Advent of Code")
+          .flair
+            #flair-euler
+              img(src='https://projecteuler.net/profile/Cheezmeister.png' alt="Project Euler")
+
+    section.interstitial.wow.slideInRight
+      .center-children
+        .quote
           :markdown
             An affinity for *learning* new things, a *left-brain-meets-right* approach to computing, and a passion for *creative expression* make me something like a Swiss-army sabre.
 
@@ -199,9 +209,9 @@ html(lang="en")
                 p: a(href='https://github.com/cheezmeister/gfsticky') Game Design & Programming Sticky Topic
 
 
-    section.wow.fadeIn.background-doodle-color
+    section.interstitial.wow.fadeIn.background-doodle-color
       .center-children
-        .interstitial
+        .quote
           :markdown
             Scripter of Java.  
             Tisane of Coffee.  
@@ -234,9 +244,9 @@ html(lang="en")
       .center-children
         +place('Boston, MA', '47.609722', '-122.333056', 'I live here.')
 
-    section.wow.fadeIn.background-doodle-light.center-children
+    section.interstitial.wow.fadeIn.background-doodle-light.center-children
       .center-children
-        .interstitial
+        .quote
           .row
             .col-md-4 Code Monkey
             .col-md-4 ⛷
