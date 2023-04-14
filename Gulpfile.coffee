@@ -3,7 +3,7 @@ pug = require 'gulp-pug'
 
 G.task 'default', (done) ->
   G
-    .src '*.jade'
+    .src '*.pug'
     .pipe pug()
     .pipe G.dest 'dist'
 
@@ -16,4 +16,4 @@ G.task 'default', (done) ->
 
 
 G
-  .watch '*.jade', G.series 'default'
+  .watch '*.pug', G.series 'default'
