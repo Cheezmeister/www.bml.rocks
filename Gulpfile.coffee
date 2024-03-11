@@ -15,5 +15,5 @@ G.task 'default', (done) ->
     .pipe G.dest 'dist/assets'
 
 
-G
+G.task 'watch', ['default'], (done) ->
   .watch '*.pug', G.series 'default'
