@@ -16,4 +16,4 @@ G.task 'default', (done) ->
 
 
 G.task 'watch', ['default'], (done) ->
-  .watch '*.pug', G.series 'default'
+  G.watch '*.pug', G.series 'default'
