@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm serve",
     "serve": "live-server dist --port=31337",
     "build": "gulp",
     "deploy": "chmod -R u+rwX,go+rX,go-w dist/ && rsync -aivze ssh dist/ gany:www/bml.rocks/www/"

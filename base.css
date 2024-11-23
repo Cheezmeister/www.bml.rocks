@@ -1,0 +1,14 @@
+
+h1 {
+  font-family: Hurricane, Gabriola, Georgia, serif;
+  font-size: 5em;
+}
+body {
+  font-family: Manrope, Helvetica, sans;
+  background: #c4a89e;
+}
+a {
+  text-decoration: none;
+  color: #8f8;
+  text-shadow: 0px 0px 8px #afa;
+}
