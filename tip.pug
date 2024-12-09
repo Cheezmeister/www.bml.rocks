@@ -1,0 +1,53 @@
+mixin css(source)
+  link(rel='stylesheet' href=source)
+
+doctype html
+html(lang="en")
+  head
+    title Tip Jar
+    +css('base.css')
+
+  body
+    h1 Support My Work/Play/Life/Vibes
+    p If you'd like to support my work, here are various ways you can contribute:
+
+    .payment-methods
+      .method
+        h2 Monero (XMR)
+        img(src="https://user-images.githubusercontent.com/581911/307042164-e5a7c5b1-9f5f-4c9f-9c0e-c9e0e5e5a5a5.png" alt="Monero QR Code")
+        p Address: 49wH4MLdp62BrG7pUuh7dJ51icq5ZHGdYw2qLs4oVsZuY6FmA7pTZZ6xVSTc5pcnjgwPS9tHvZgibVzk2W7Qxwm8AzNNWcw
+
+      .method
+        h2 Bitcoin (BTC)
+        img(src="https://user-images.githubusercontent.com/581911/307042166-e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3.png" alt="Bitcoin QR Code")
+        p Address: bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq
+
+      .method
+        h2 Venmo
+        img(src="https://user-images.githubusercontent.com/581911/307042168-e2e2e2e2-e2e2-e2e2-e2e2-e2e2e2e2e2e2.png" alt="Venmo QR Code")
+        p
+          span Username:
+          a(href="https://venmo.com/Brendan-Luchen") @Brendan-Luchen
+
+      .method
+        h2 Other Payment Methods
+        ul
+          li PayPal: [TODO: Add PayPal information]
+          li Zelle: [TODO: Add Zelle information]
+          li Ko-Fi: [TODO: Add Ko-Fi link]
+          li Patreon: [TODO: Add Patreon link]
+
+    style.
+      .payment-methods {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      .method {
+        margin: 20px;
+        text-align: center;
+      }
+      img {
+        max-width: 200px;
+        height: auto;
+      }
