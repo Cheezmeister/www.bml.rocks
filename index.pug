@@ -334,3 +334,53 @@ html(lang="en")
             ].join('')
           );
       });
+
+    script(type="application/ld+json").
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Brendan Luchen",
+        "jobTitle": "Full-Stack Engineer",
+        "url": "https://luchenlabs.com",
+        "sameAs": [
+          "https://linkedin.com/in/cheezmeister",
+          "https://twitter.com/chzmstr",
+          "https://github.com/cheezmeister"
+        ],
+        "knowsAbout": [
+          "Full-Stack Development",
+          "JavaScript",
+          "NodeJS",
+          "CoffeeScript",
+          "Elixir",
+          "Git",
+          "Docker",
+          "Linux",
+          "Game Development"
+        ],
+        "workExample": [
+          {
+            "@type": "SoftwareApplication",
+            "name": "Epic Haiku for Android",
+            "applicationCategory": "HealthApplication",
+            "url": "https://play.google.com/store/apps/details?id=com.epic.haiku.android&hl=en"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Teikametrics Flywheel",
+            "applicationCategory": "BusinessApplication",
+            "url": "https://teikametrics.com/product"
+          },
+          {
+            "@type": "VideoGame",
+            "name": "Modern Warfare 3",
+            "gamePlatform": ["PlayStation 3", "Xbox 360", "Microsoft Windows"],
+            "datePublished": "2011"
+          }
+        ],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Rochester Institute of Technology",
+          "location": "Rochester, NY"
+        }
+      }
