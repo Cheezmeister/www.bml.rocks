@@ -7,19 +7,53 @@ mixin css(source)
 mixin javascript(source)
   script(type="text/javascript" src=source)
 
+// Define variables for metadata
+- var fullName = "Brendan Luchen"
+- var jobTitle = "Full-Stack Engineer"
+- var pageTitle = "Brendan Luchen - Full-Stack Engineer"
+- var pageDescription = "Brendan Luchen, Full-Stack Engineer. Scripter of Java, Tisane of Coffee, Writer of Limericks, Frame Pointer Extraordinaire"
+- var pageImage = "https://luchenlabs.com/assets/logo.png"
+- var pageUrl = "http://www.bml.rocks"
+
 doctype html
 html(lang="en")
   head
     meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
     title Brendan Luchen
-    meta(name="description" content="Brendan Luchen, Full-Stack Engineer. Scripter of Java, Tisane of Coffee, Writer of Limericks, Frame Pointer Extraordinaire")
+    meta(name="description" content=pageDescription)
+    meta(property="og:title" content=pageTitle)
+    meta(property="og:description" content=pageDescription)
+    meta(property="og:image" content=pageImage)
+    meta(property="og:url" content=pageUrl)
+    meta(name="dc:title" content=pageTitle)
+    meta(name="dc:description" content=pageDescription)
+    meta(name="dc:creator" content=fullName)
+    meta(name="dc:publisher" content=fullName)
+    meta(name="dc:language" content="en")
+    meta(name="dc:format" content="text/html")
+    meta(name="dc:type" content="text")
+    meta(name="dc:source" content=pageUrl)
+    meta(name="twitter:card" content="summary_large_image")
+    meta(name="twitter:title" content=pageTitle)
+    meta(name="twitter:description" content=pageDescription)
+    meta(name="twitter:image" content=pageImage)
+    link(rel="canonical" href=pageUrl)
     +css('http://fonts.googleapis.com/css?family=OFL+Sorts+Mill+Goudy+TT:regular,italic')
     +css('http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
     +css('bootstrap.min.css')
     +css('animate.css')
     +javascript('wow.js')
     // +javascript('https://maps.googleapis.com/maps/api/js?key=AIzaSyB20MgpK8uazyS0pZWfkMiA6mzwLkCpzOA')
+
+    script(type="application/ld+json").
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": #{fullName},
+        "jobTitle": #{jobTitle}
+      }
+    
     
     ////////////////////// 
     // Style
@@ -33,7 +67,6 @@ html(lang="en")
         .flairzone
           display flex
           flex-direction row-reverse
-          width 40%
           justify-content space-between
           margin-top 1em
         .background-overlay-dark
@@ -160,7 +193,7 @@ html(lang="en")
           i.fa.fa-github.fa-fw.fa-2x
       .center-children
         img(width='80%' height='60%' src='/assets/cover.jpg')
-      .center-children
+      .wrapper
         .flairzone
           .flair
             #flair-stackexchange
@@ -339,7 +372,7 @@ html(lang="en")
       {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": "Brendan Luchen",
+        "name": ,
         "jobTitle": "Full-Stack Engineer",
         "url": "https://luchenlabs.com",
         "sameAs": [
