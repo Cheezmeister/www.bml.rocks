@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg
+   width="200"
+   height="60"
+   viewBox="0 0 200 60"
+   version="1.1"
+   id="aocf"
+   sodipodi:docname="aocf.svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     />
+  <defs
+     id="defs1" />
+  <g id="background">
+    <rect
+       style="fill:#0f0f23;fill-opacity:1;stroke:#7070c0;stroke-width:1px"
+       id="rect1"
+       width="200"
+       height="60"
+       x="0"
+       y="0" />
+  </g>
+  <g id="title">
+    <text x="36" y="20" fill="green" style="font-family:monospaced;text-shadow:0 0 0px #00cc00, 0 0 2px #00cc00">Advent of Code</text>
+  </g>
+
+  <g id="stars">
+    <text x="0" y="60" fill="yellow" style="font-family:monospaced;font-size:60px">*</text>
+
+    <g viewBox="0 0 30 30" fill="none" cc-attribution="https://www.svgrepo.com/svg/525539/star">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier" transform="translate(151, 6) scale(2)">
+        <path d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
+        fill="#ffff66">
+        </path>
+      </g>
+    </g>
+  </g>
+
+  <g id="scores" style="font-size:0.75em">
+    <text id="2015" x="36" y="36" fill="yellow" >02*</text>
+    <text id="2016" x="60" y="36" fill="yellow" >22*</text>
+    <text id="2017" x="84" y="36" fill="yellow" >40*</text>
+    <text id="2018" x="108" y="36" fill="yellow">04*</text>
+    <text id="2019" x="132" y="36" fill="yellow">02*</text>
+    <text id="2020" x="36" y="52" fill="yellow" >19*</text>
+    <text id="2021" x="60" y="52" fill="yellow" >00*</text>
+    <text id="2022" x="84" y="52" fill="yellow" >02*</text>
+    <text id="2023" x="108" y="52" fill="yellow">01*</text>
+    <text id="2024" x="132" y="52" fill="yellow">00*</text>
+  </g>
+
+  <g id="total">
+    <text id="total" x="164" y="38" fill="blue" style="font-size:1em;font-family:monospaced;text-shadow:0 0 0px #0000cc, 0 0 2px #0000cc">92</text>
+  </g>
+</svg>

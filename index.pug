@@ -153,6 +153,14 @@ html(lang="en")
               background hsl(0, 00%,15%)
               img 
                 width 80%
+              div.item
+                border 1px solid #8888
+                border-radius 1em
+                padding 1em
+                margin 1em
+              p.professional
+                font-size 1.2em
+
             &#when
               background hsl(72, 00%,20%)
             &#why
@@ -202,10 +210,11 @@ html(lang="en")
           .flair
             #flair-aoc(style='border: 1px solid #888')
               a(href='https://adventofcode.com')
-                img(src='/assets/aoc-flair-prototype.png' alt="Advent of Code")
+                img(src='/assets/test-aoc-flair.svg' alt="Advent of Code")
           .flair
             #flair-euler
-              img(src='https://projecteuler.net/profile/Cheezmeister.png' alt="Project Euler")
+              a(href='https://projecteuler.net')
+                img(src='https://projecteuler.net/profile/Cheezmeister.png' alt="Project Euler")
 
     section.interstitial.wow.slideInRight
       .center-children
@@ -220,10 +229,15 @@ html(lang="en")
         .col-md-6
           div(style='text-align: center')
             h3 Professional
-            p: a(href='https://play.google.com/store/apps/details?id=com.epic.haiku.android&hl=en') Epic Haiku for Android
-            p: a(href='https://teikametrics.com/product') Teikametrics Flywheel
-            p: a(href='https://www.callofduty.com/mw3') Modern Warfare 3 (2011)
-            +image('mw3.png', 'Modern Warfare 3 (2011)')
+            div.item
+              +image('mw3.png', 'Modern Warfare 3 (2011)')
+              p.professional: a(href='https://www.callofduty.com/mw3') Modern Warfare 3 (2011)
+            div.item
+              +image('haiku.png', 'Epic Haiku for Android')
+              p.professional: a(href='https://play.google.com/store/apps/details?id=com.epic.haiku.android&hl=en') Epic Haiku for Android
+            div.item
+              +image('teika.png', 'Teikametrics Flywheel')
+              p.professional: a(href='https://teikametrics.com/product') Teikametrics Flywheel
         .col-md-6
           div(style='text-align: center')
             h3 Personal
@@ -273,9 +287,11 @@ html(lang="en")
         +place('Portland, ME', '43.666667', '-70.266667', 'I made games for Activision here.')
       .center-children
         +place('Madison, WI', '43.066667', '-89.4', 'I made apps for Epic here.')
-        +place('Seattle, WA', '47.609722', '-122.333056', 'I hosted for AirBnB here.')
+        +place('Seattle, WA', '47.609722', '-122.333056', 'I hosted for AirBnB and met my future wife here.')
       .center-children
         +place('Boston, MA', '47.609722', '-122.333056', 'I live here.')
+      .center-children
+        +place('Lowell, MA', 'fix', 'me', 'I live here.')
 
     section.interstitial.wow.fadeIn.background-doodle-light.center-children
       .center-children
